@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Suburb;
 use App\Models\User;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
@@ -18,13 +19,21 @@ class AuthController extends Controller
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'confirm_password' => 'required_with:password|string|min:6|same:password'
+            'confirm_password' => 'required_with:password|string|min:6|same:password',
+            'suburb' => 'required|string|max:50'
         ]);
+
+        $suburb = Suburb::where('name', $request->suburb)->first();
+
+        if (!$suburb) {
+            return response()->json(['error' => 'Suburb not found'], 404);
+        }
 
         $user = User::create([
             'name' => $request->name,
             'password' => bcrypt($request->password),
-            'email' => $request->email
+            'email' => $request->email,
+            'primary_location_suburb_id' => $suburb->id
         ]);
 
         return $this->success([

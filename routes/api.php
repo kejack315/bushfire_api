@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\UserLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -32,4 +33,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/logout', 'logout');
     });
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/user-locations', [UserLocationController::class, 'create']);
+    Route::delete('/user-locations/{id}', [UserLocationController::class, 'delete']);
 });

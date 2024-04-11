@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call([
+            SuburbSeeder::class,
+        ]);
         # TODO: Store microservice endpoint in .env file...
         $allSuburbs = Http::get('http://localhost:8000/suburb-list');
         foreach($allSuburbs["suburbs"] as $key => $value) {
@@ -21,5 +24,6 @@ class DatabaseSeeder extends Seeder
                 "name" => $value
             ]);
         }
+
     }
 }
