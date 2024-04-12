@@ -1,0 +1,6 @@
+bushfire_warnings.db
+venv
+.idea
+__pycache__
+.cache.sqlite
+controllers/.cache.sqlite
