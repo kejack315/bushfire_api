@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FireDangerRatingController;
+use App\Http\Controllers\UserLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -41,6 +43,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/user-locations', [UserLocationController::class, 'create']);
-    Route::delete('/user-locations/{id}', [UserLocationController::class, 'delete']);
+    Route::put('/user-location', [UserLocationController::class, 'update']);
+    Route::get('/user-location', [UserLocationController::class, 'edit']);
 });
