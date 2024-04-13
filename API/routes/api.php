@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FireDangerRatingController;
+use App\Http\Controllers\UserLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -20,6 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//
+//Route::controller(AuthController::class)->group(function () {
+//    Route::post('/register', 'register');
+//    Route::post('/login', 'login')->name('login');
+//    Route::get('/logout', 'logout');
+//});
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
@@ -33,4 +40,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'getUsersPrimaryLocationFireDangerRating'])->name('fire-danger-rating.me.show');
     Route::get('/all/fire-danger-ratings', [FireDangerRatingController::class,
         'getFireDangerRatings'])->name('fire-danger-rating.all');
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::put('/user-location', [UserLocationController::class, 'update']);
+    Route::get('/user-location', [UserLocationController::class, 'edit']);
 });

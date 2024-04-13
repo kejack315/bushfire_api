@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'primary_location_suburb_id'
     ];
 
     /**
@@ -43,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function suburb()
+    {
+        return $this->belongsTo(Suburb::class, 'primary_location_suburb_id');
+    }
 }
