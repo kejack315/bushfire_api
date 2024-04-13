@@ -45,7 +45,13 @@ class UserLocationController extends Controller
      */
     public function edit(UserLocation $userLocation)
     {
-        //
+        $user = auth()->user();
+
+        if ($user) {
+            return response()->json(['user' => $user], 200);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
     }
 
     /**
@@ -53,7 +59,17 @@ class UserLocationController extends Controller
      */
     public function update(UpdateUserLocationRequest $request, UserLocation $userLocation)
     {
-        //
+        $user = auth()->user();
+
+
+        if ($user) {
+            $user->suburb = $request->input('suburb');
+            $user->save();
+
+            return response()->json(['message' => 'User location updated successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
     }
 
     /**
