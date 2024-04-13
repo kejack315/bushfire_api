@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('password');
             $table->string('email')->unique()->nullable();
-            $table->bigInteger('primary_location_suburb_id')->nullable();
+            $table->bigInteger('primary_location_suburb_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

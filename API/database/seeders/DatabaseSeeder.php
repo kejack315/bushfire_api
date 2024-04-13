@@ -13,14 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        # TODO: Store microservice endpoint in .env file...
-        $allSuburbs = Http::get('http://localhost:8000/suburb-list');
+        $microserviceBaseEndpoint = config("DANGER_RATING_MICROSERVICE_ENDPOINT", "http://localhost:8000/");
+        $allSuburbs = Http::get($microserviceBaseEndpoint."suburb-list");
         foreach($allSuburbs["suburbs"] as $key => $value) {
-            $newSuburb = Suburb::create([
+            Suburb::create([
                 "id" => $key,
                 "name" => $value
             ]);
         }
-
     }
 }
