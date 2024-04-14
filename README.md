@@ -130,6 +130,8 @@ Run the microservice
 python ./main.py
 ```
 
+_**Note:** If the default port 8000 is busy on your local machine you can modify, the port of the microservice in the `microservice.port` file._
+
 ### Setup & Run Laravel API
 
 Set the project root folder in Laragon to `/FireDangerRatingLaravel_New/API/public` and run the 

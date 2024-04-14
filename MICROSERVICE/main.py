@@ -10,6 +10,7 @@ from contextlib import asynccontextmanager
 from seeders.seed import seed, update_if_changed
 from controllers.fire_danger_rating_controller import handle_fire_danger_rating_request, \
     get_all_current_fire_danger_ratings
+from utils.validate import validate_port
 
 service_start_time: int = 0
 req_cnt: int = 0
@@ -132,5 +133,12 @@ async def suburb_list(req: Request):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8000)
-
+    try:
+        PORT = open("microservice.port", "r").readline().strip()
+        if not validate_port(PORT):
+            print(f"Invalid port, using port 8000")
+            PORT = 8000
+    except FileNotFoundError:
+        print(f"microservice.port file not found, using port 8000")
+        PORT = 8000
+    uvicorn.run(app, host="localhost", port=int(PORT))
