@@ -37,10 +37,10 @@ class FireWarningNotifierController extends Controller
         $users = User::whereIn('id', $userIds)->get();
 
         // now that we have the users we can then send a notification to these users
-        $fireWarningData[
-            'warning-content' => 'Fire rating of 3 or higher released for your area'
+        $fireWarningData = [
+            'warning-content' => 'Fire rating of 3 or higher released for your area',
             'url' => 'for more information on bushfire preparation and response, head to https://www.dfes.wa.gov.au/ '
-        ]
+        ];
         
         // push the fireWarning notification data to the application. 
         // Notification::send($users, new FireWarningNotifier($fireWarningData));
