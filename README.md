@@ -119,21 +119,43 @@ GET /api/me/fire-danger-ratings
 ```
 GET /api/all/fire-danger-ratings
 ```
+**API documentation - swagger**
 
+Install composer packages
+```
+composer require darkaonline/l5-swagger
+php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+php artisan l5-swagger:generate
+```
+Test API
+```
+Go to http://your_api_url/api/documentation
+```
+**Register for User Account**
+```
+POST /api/register
+```
+Request Body Format:
+```json
+{
+  "name": "AAA",
+  "email": "AAA@gmail.com",
+  "password": "a123456",
+  "confirm_password": "a123456",
+  "suburb": "PERTH"
+}
+```
 **Log In to User Account**
 ```
-TODO @Jason
+POST /api/login
 ```
 
 **Log Out of User Account**
 ```
-TODO @Jason
+GET /api/logout
 ```
 
-**Register for User Account**
-```
-TODO @Jason
-```
+
 
 **End User Push Notifications**
 ```

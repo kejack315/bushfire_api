@@ -11,8 +11,52 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    use ApiResponser;
 
+    use ApiResponser;
+    /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Register a new user",
+     *     tags={"Authentication"},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="User's name",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User's email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User's password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="confirm_password",
+     *         in="query",
+     *         description="confirm User's password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="suburb",
+     *         in="query",
+     *         description="User's suburb",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="201", description="User registered successfully"),
+     *     @OA\Response(response="422", description="Validation errors")
+     * )
+     */
     public function register(Request $request)
     {
         $request->validate([
@@ -39,6 +83,29 @@ class AuthController extends Controller
         ], 'User registration successful!!');
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Authenticate user and generate JWT token",
+     *     tags={"Authentication"},
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="User's email",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="User's password",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="200", description="Login successful"),
+     *     @OA\Response(response="401", description="Invalid credentials")
+     * )
+     */
     public function login(Request $request)
     {
         $attr = $request->validate([
@@ -65,6 +132,17 @@ class AuthController extends Controller
         ], 'User list featched successfully!!');
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/logout",
+     *     summary="Log out current user",
+     *     tags={"Authentication"},
+     *     description="Log out the currently authenticated user and invalidate the JWT token",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="401", description="Unauthorized")
+     * )
+     */
     public function logout()
     {
         auth()->user()->tokens()->delete();

@@ -1,0 +1,268 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new user",
+                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User's name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "confirm_password",
+                        "in": "query",
+                        "description": "confirm User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "suburb",
+                        "in": "query",
+                        "description": "User's suburb",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate user and generate JWT token",
+                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Log out current user",
+                "description": "Log out the currently authenticated user and invalidate the JWT token",
+                "operationId": "fa8a9f737ac3eeedebed8d1411ed0e7d",
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fire-danger-ratings": {
+            "get": {
+                "tags": [
+                    "FireDangerRating"
+                ],
+                "summary": "Get FireDangerRating",
+                "description": "Get FireDangerRating",
+                "operationId": "fd3e3e20464e1be2ec44599e35b749d1",
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/me/fire-danger-ratings": {
+            "get": {
+                "tags": [
+                    "FireDangerRating"
+                ],
+                "summary": "Get FireDangerRating",
+                "description": "Get FireDangerRating",
+                "operationId": "da7bcb0340ad747728b906667ae065a5",
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/all/fire-danger-ratings": {
+            "get": {
+                "tags": [
+                    "FireDangerRating"
+                ],
+                "summary": "Get FireDangerRating",
+                "description": "Get FireDangerRating",
+                "operationId": "eb6d103b19e4043a20517a6e4eb23fda",
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-location": {
+            "get": {
+                "tags": [
+                    "UserLocationSuburb"
+                ],
+                "summary": "Edit user location",
+                "description": "Edit user location page",
+                "operationId": "7a9e8975a8fc0ddeb95506c07673a56e",
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user-location/update": {
+            "put": {
+                "tags": [
+                    "UserLocationSuburb"
+                ],
+                "summary": "Update user location",
+                "description": "Update user location",
+                "operationId": "bf6cd9771a5c2a3619d476255fbbfbeb",
+                "parameters": [
+                    {
+                        "name": "suburb",
+                        "in": "query",
+                        "description": "User's suburb",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logout successful"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

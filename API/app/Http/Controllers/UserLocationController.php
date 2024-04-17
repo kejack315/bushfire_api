@@ -48,6 +48,17 @@ class UserLocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    /**
+     * @OA\Get(
+     *     path="/api/user-location",
+     *     summary="Edit user location",
+     *     tags={"UserLocationSuburb"},
+     *     description="Edit user location page",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="401", description="Unauthorized")
+     * )
+     */
     public function edit()
     {
         $user = Auth::user();
@@ -63,6 +74,24 @@ class UserLocationController extends Controller
 
     /**
      * Update the specified resource in storage.
+     */
+    /**
+     * @OA\Put(
+     *     path="/api/user-location/update",
+     *     summary="Update user location",
+     *     tags={"UserLocationSuburb"},
+     *     description="Update user location",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Parameter(
+     *         name="suburb",
+     *         in="query",
+     *         description="User's suburb",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="401", description="Unauthorized")
+     * )
      */
     public function update(Request $request)
     {
