@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Suburb::class, 'primary_location_suburb_id');
     }
+
+    public function userLocations()
+    {
+        return $this->hasMany(UserLocation::class);
+    }
 }

@@ -36,6 +36,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'getFireDangerRatings'])->name('fire-danger-rating.all');
 });
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::put('/user-location', [UserLocationController::class, 'update']);
+    Route::put('/user-location/update', [UserLocationController::class, 'update']);
     Route::get('/user-location', [UserLocationController::class, 'edit']);
 });
