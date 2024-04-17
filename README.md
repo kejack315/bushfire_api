@@ -159,7 +159,7 @@ GET /api/logout
 
 **End User Push Notifications**
 ```
-TODO @Victor
+TODO @Victor 
 ```
 
 ### 2.4 User Accounts & Authentication
