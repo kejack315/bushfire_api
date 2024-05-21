@@ -89,7 +89,7 @@ class UserLocationController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
-     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="200", description="Update successful"),
      *     @OA\Response(response="401", description="Unauthorized")
      * )
      */

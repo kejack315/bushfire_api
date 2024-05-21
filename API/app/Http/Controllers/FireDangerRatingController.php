@@ -42,7 +42,7 @@ class FireDangerRatingController extends Controller
      *     tags={"FireDangerRating"},
      *     description="Get FireDangerRating",
      *     security={{"bearerAuth": {}}},
-     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="200", description="Get successful"),
      *     @OA\Response(response="401", description="Unauthorized")
      * )
      */
@@ -56,7 +56,7 @@ class FireDangerRatingController extends Controller
      *     tags={"FireDangerRating"},
      *     description="Get FireDangerRating",
      *     security={{"bearerAuth": {}}},
-     *     @OA\Response(response="200", description="Logout successful"),
+     *     @OA\Response(response="200", description="Get successful"),
      *     @OA\Response(response="401", description="Unauthorized")
      * )
      */

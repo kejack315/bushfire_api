@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/logout', 'logout');
     });
-    Route::get('/fire-danger-ratings', [FireDangerRatingController::class,
+    Route::post('/fire-danger-ratings', [FireDangerRatingController::class,
         'getFireDangerRating'])->name('fire-danger-rating.show');
     Route::get('/me/fire-danger-ratings', [FireDangerRatingController::class,
         'getUsersPrimaryLocationFireDangerRating'])->name('fire-danger-rating.me.show');
